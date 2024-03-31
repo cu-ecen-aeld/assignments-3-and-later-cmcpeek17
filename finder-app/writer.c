@@ -18,15 +18,15 @@ int main ( int argc, char* argv[] ) {
 		return 1;
 	}
 
-	fd = creat (argv[2], 0664);
+	fd = creat (argv[1], 0664);
 	if (fd == -1) {
 		syslog(LOG_ERR, "file could not be created");
 		return 1;
 	}
 	
 	ssize_t write_size;
-	syslog(LOG_ERR, "Writing %s to %s\n", argv[2], argv[1]);
-	write_size = write( fd, argv[1], strlen(argv[1]));
+	syslog(LOG_ERR, "Writing %s to %s\n", argv[1], argv[2]);
+	write_size = write( fd, argv[2], strlen(argv[2]));
 	
 	if (write_size == -1) {
 		syslog(LOG_ERR, "file could not be written");
